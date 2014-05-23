@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<% if flash[:notice] %>
+  <p style="background-color:green;"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p style="background-color:red;"><%= flash[:alert] %></p>
+<% end %>
+
 <%= yield %>
 
 </body>

@@ -1,8 +1,10 @@
 # Rails Base application
 
-Rails base application
+Rails base application with devise for authentication.
 
 ## Config for your site
+
+### Application name
 
 Rename this project to your custom project name.
 First go inside `site` folder and search for `site` word in all project, and change the important things:
@@ -24,4 +26,25 @@ $ grep -rin 'site' .
 
 Otherwise if you preferer you can use the the [rename gem](http://rubygems.org/gems/rename) from [morshedalam](https://github.com/morshedalam/rename).
 
+### Devise
+
+#### Admin user
+This application has an `Admin` user. By defualt Devise create a model with this modules:
+
+```
+devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+```
+
+But we **remove the registerable option** for admin users.
+
+And we add the **scoped views** for customize the devise views by model, this means that we add the `config.scoped_views = true` option inside the `config/initializers/devise.rb` file.
+
+#### Email configuration
+Ensure you have defined default url options in your environments files. Here is an example of `default_url_options` appropriate for a development environment in `config/environments/development.rb`:
+
+```
+config.action_mailer.default_url_options = { host: 'localhost:3000' }
+```
+
+In production, `:host` should be set to the actual host of your application.
 
