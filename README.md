@@ -39,6 +39,8 @@ But we **remove the registerable option** for admin users.
 
 And we add the **scoped views** for customize the devise views by model, this means that we add the `config.scoped_views = true` option inside the `config/initializers/devise.rb` file.
 
+Other thing that we do is overwrite the method `after_sign_in_path_for` in `app/controllers/application_conroller.rb`, this is because if the user that sign in is an Admin we will be redirect by default to stored location or admin_path 
+
 #### Email configuration
 Ensure you have defined default url options in your environments files. Here is an example of `default_url_options` appropriate for a development environment in `config/environments/development.rb`:
 
