@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admins, :module => 'admin', :path => 'admin'
   root 'home#index'
 
   #######################################################
   # ADMIN routes
   #######################################################
+  devise_for :admins, :module => 'admin', :path => 'admin'
   namespace :admin do
     # Dashboard accesible by /admin (work as admin namespace root)
     get '/' => 'dashboard#index'
