@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, :module => 'admin', :path => 'admin'
   root 'home#index'
 
   #######################################################
