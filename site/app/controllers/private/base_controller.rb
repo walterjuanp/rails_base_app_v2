@@ -6,4 +6,6 @@ class Private::BaseController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Only admin users can access
+  before_action :authenticate_user!
 end

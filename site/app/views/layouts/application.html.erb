@@ -15,11 +15,18 @@
   <p style="background-color:red;"><%= flash[:alert] %></p>
 <% end %>
 
-<%= link_to 'home', root_path %> || 
+<%= link_to 'home', root_path %> 
+<br>
 <%= link_to 'private', private_path %> || 
+<% if user_signed_in? %>
+  <%= link_to 'private - sign out', destroy_user_session_path, :method => :delete, :confirm => 'Are you sure to sign out of User account?' %>
+<% else %>
+  <%= link_to 'private - sign in', new_user_session_path %>
+<% end %>
+<br>
 <%= link_to 'admin', admin_path %> || 
 <% if admin_signed_in? %>
-  <%= link_to 'admin - sign out', destroy_admin_session_path, :method => :delete, :confirm => 'Are you sure to sign out?' %>
+  <%= link_to 'admin - sign out', destroy_admin_session_path, :method => :delete, :confirm => 'Are you sure to sign out of Admin account?' %>
 <% else %>
   <%= link_to 'admin - sign in', new_admin_session_path %>
 <% end %>
