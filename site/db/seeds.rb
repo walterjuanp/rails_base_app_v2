@@ -6,15 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+# Create admin user
+email = 'adm@adm.com'
+password = 'aaaaaaaa'
+
 admin = Admin.new
-admin.email = 'adm@adm.com'
-admin.password = 'aaaaaaaa'
-admin.password_confirmation = 'aaaaaaaa'
+admin.email = email
+admin.password = password
+admin.password_confirmation = password
 admin.save!
+puts "Admin user created with email [#{email}] and password [#{password}]. Remember to change!"
+
+# Create User user
+email = 'usr@usr.com'
+password = 'uuuuuuuu'
 
 user = User.new
-user.email = 'usr@usr.com'
-user.password = 'uuuuuuuu'
-user.password_confirmation = 'uuuuuuuu'
+user.email = email
+user.password = password
+user.password_confirmation = password
 user.confirmed_at = DateTime.now
 user.save!
+puts "User user created with email [#{email}] and password [#{password}]. Remember to change!"
