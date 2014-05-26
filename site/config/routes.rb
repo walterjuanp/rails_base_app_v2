@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'public/home#index'
+
+  #######################################################
+  # PUBLIC routes
+  #######################################################
+  scope module: 'public' do
+    # your custom routes
+  end
+
+
 
   #######################################################
   # PRIVTE routes (used for User)

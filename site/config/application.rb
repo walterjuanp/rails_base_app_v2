@@ -19,5 +19,14 @@ module Site
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+
+    # Add js/css from public, private and admin for precompile
+    config.assets.precompile += ['public/application.js', 'public/application.css', 
+        'private/application.js', 'private/application.css', 
+        'admin/application.js', 'admin/application.css']
+
+    # Example for add fonts folder to assets path
+    # config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

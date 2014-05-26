@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Site</title>
+  <%= stylesheet_link_tag    'private/application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'private/application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>Private layout</h1>
+
+<hr/>
+
+<% if flash[:notice] %>
+  <p style="background-color:green;"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p style="background-color:red;"><%= flash[:alert] %></p>
+<% end %>
+
+<%= link_to 'home', root_path %> 
+<br>
+<%= link_to 'private', private_path %> || 
+<% if user_signed_in? %>
+  <%= link_to 'private - sign out', destroy_user_session_path, :method => :delete, :confirm => 'Are you sure to sign out of User account?' %>
+<% else %>
+  <%= link_to 'private - sign in', new_user_session_path %>
+<% end %>
+<br>
+<%= link_to 'admin', admin_path %> || 
+<% if admin_signed_in? %>
+  <%= link_to 'admin - sign out', destroy_admin_session_path, :method => :delete, :confirm => 'Are you sure to sign out of Admin account?' %>
+<% else %>
+  <%= link_to 'admin - sign in', new_admin_session_path %>
+<% end %>
+
+<hr/>
+
+<%= yield %>
+
+</body>
+</html>
