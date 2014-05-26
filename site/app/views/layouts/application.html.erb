@@ -16,11 +16,12 @@
 <% end %>
 
 <%= link_to 'home', root_path %> || 
+<%= link_to 'private', private_path %> || 
 <%= link_to 'admin', admin_path %> || 
 <% if admin_signed_in? %>
-  <%= link_to 'sign out', destroy_admin_session_path, :method => :delete, :confirm => 'Are you sure to sign out?' %>
+  <%= link_to 'admin - sign out', destroy_admin_session_path, :method => :delete, :confirm => 'Are you sure to sign out?' %>
 <% else %>
-  <%= link_to 'sign in', new_admin_session_path %>
+  <%= link_to 'admin - sign in', new_admin_session_path %>
 <% end %>
 
 <hr/>
