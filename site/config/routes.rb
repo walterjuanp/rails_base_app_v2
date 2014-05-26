@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'home#index'
 
   #######################################################
   # PRIVTE routes (used for User)
   #######################################################
+  devise_for :users, :module => 'private', :path => 'private'
   namespace :private do
     # Dashboard accesible by /private (work as private namespace root)
     get '/' => 'dashboard#index'
