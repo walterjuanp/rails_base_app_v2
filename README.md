@@ -1,6 +1,14 @@
 # Rails Base application
 
-Rails base application with devise for authentication.
+Rails 4.1 base application with Devise authentication and private, public, admin sections.
+
+Start using app:
+
+```
+$ git clone
+$ cd 
+```
+
 
 # Change application name
 
