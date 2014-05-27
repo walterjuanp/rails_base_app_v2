@@ -1,13 +1,28 @@
 # Rails Base application
 
-Rails 4.1 base application with Devise authentication and private, public, admin sections.
+Rails 4.1 (using Ruby 2.0.0) base application with Devise authentication and private, public, admin sections.
 
-Start using app:
+For start using app:
 
 ```
-$ git clone
-$ cd 
+# download
+$ git clone git@github.com:walterjuanp/rails_base_app_v2.git
+
+# install gems
+$ cd rails_base_app_v2/site/
+$ bundle
+
+# create database and migrate
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
+
+# run seeds for add the first users
+$ bundle exec rake db:seed
+
+# run! check all at localhost:3000
+$ bundle exec rails s
 ```
+
 
 
 # Change application name
