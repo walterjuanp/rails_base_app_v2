@@ -2,9 +2,7 @@
 
 Rails base application with devise for authentication.
 
-## Config for your site
-
-### Application name
+# Change application name
 
 Rename this project to your custom project name.
 First go inside `site` folder and search for `site` word in all project, and change the important things:
@@ -26,27 +24,87 @@ $ grep -rin 'site' .
 
 Otherwise if you preferer you can use the the [rename gem](http://rubygems.org/gems/rename) from [morshedalam](https://github.com/morshedalam/rename).
 
-### Devise
+# Structure
+This base application is divided in 3 parts:
 
-#### Admin user
+ - **public**: Controllers and views for public, non autentication access.
+ - **private**: Controllers and views for private access, only User's can access.
+ - **admin**: Controllers and views for admin access, only Admin's can access.
+ 
+ The controllers in all parts extends from the correspondent `base_controller`.
+
+# Devise configuration
+
+We add the **scoped views** for customize the devise views by model, this means that we add the `config.scoped_views = true` option inside the `config/initializers/devise.rb` file.
+
+Other thing that we do is **overwrite** the method `after_sign_in_path_for` in `app/controllers/application_conroller.rb`, this is because if the user that sign in is an Admin we will be redirect by default to stored location or admin_path same as for User's this will be redirect to private_path or stored location. 
+
+## Admin
 This application has an `Admin` user. By defualt Devise create a model with this modules:
 
 ```
 devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 ```
 
-But we **remove the registerable option** for admin users.
+But we **remove the registerable option** for admin users:
 
-And we add the **scoped views** for customize the devise views by model, this means that we add the `config.scoped_views = true` option inside the `config/initializers/devise.rb` file.
+```
+devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+```
 
-Other thing that we do is **overwrite** the method `after_sign_in_path_for` in `app/controllers/application_conroller.rb`, this is because if the user that sign in is an Admin we will be redirect by default to stored location or admin_path 
+This means that the devise controllers are:
 
-#### Email configuration
-Ensure you have defined default url options in your environments files. Here is an example of `default_url_options` appropriate for a development environment in `config/environments/development.rb`:
+ - controllers/admin/passwords_controller
+ - controllers/admin/sessions_controller
+ 
+ And views:
+
+ - views/admin/passwords/edit.html.erb
+ - views/admin/passwords/new.html.erb
+ - views/admin/sessions/new.html.erb
+
+## User
+This application has an `User` user. We add some modules apart from defaults, we add `confirmable` and `lockable`:
+
+```
+devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
+```
+
+This means that the devise controllers are:
+
+ - controllers/private/confirmations_controller
+ - controllers/private/passwords_controller
+ - controllers/private/registrations_controller
+ - controllers/private/unlocks_controller
+ - controllers/private/sessions_controller
+ 
+ And views:
+
+ - views/private/confirmations/*.html.erb
+ - views/private/passwords/*.html.erb
+ - views/private/registrations/*.html.erb
+ - views/private/unlocks/*.html.erb
+ - views/private/sessions/*.html.erb
+
+## Email
+### Templates
+The email is shared between users and admins, the templates are:
+
+ - views/devise/mailer/confirmation_instructions.html.erb
+ - views/devise/mailer/reset_password_instructions.html.erb
+ - views/devise/mailer/unlock_instructions.html.erb
+
+### Configuration
+Ensure you have defined default url and delivery method options in your environments files. Here is an example of `default_url_options` and `delivery_method` appropriate for a development environment in `config/environments/development.rb`:
 
 ```
 config.action_mailer.default_url_options = { host: 'localhost:3000' }
+config.action_mailer.delivery_method = :sendmail
 ```
 
 In production, `:host` should be set to the actual host of your application.
 
+Inside `config/initializers/devise.rb` you can find some other configurations such as `config.mailer_sender`
+
+## Others
+Check `config/initializers/devise.rb` for other devise configurations.
