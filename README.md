@@ -80,7 +80,7 @@ This means that the devise controllers are:
  - controllers/admin/passwords_controller
  - controllers/admin/sessions_controller
  
- And views:
+And views:
 
  - views/admin/passwords/edit.html.erb
  - views/admin/passwords/new.html.erb
@@ -101,7 +101,7 @@ This means that the devise controllers are:
  - controllers/private/unlocks_controller
  - controllers/private/sessions_controller
  
- And views:
+And views:
 
  - views/private/confirmations/*.html.erb
  - views/private/passwords/*.html.erb
