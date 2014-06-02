@@ -30,6 +30,26 @@ gem 'spring',        group: :development
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 3.2.4'
 
+# Ransack is the successor to the MetaSearch gem. It improves and expands upon MetaSearch's functionality, but does not have a 100%-compatible API.
+gem 'ransack', '~> 1.2.3'
+
+# Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 3+
+gem 'kaminari', '~> 0.15.1'
+
+# Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
+gem 'bootstrap-sass', '~> 3.1.1.1'
+# bootstrap_form is a rails form builder that makes it super easy to create beautiful-looking forms using Twitter Bootstrap 3+
+gem 'bootstrap_form', '~> 2.1.1'
+# BreadcrumbsOnRails is a simple Ruby on Rails plugin for creating and managing a breadcrumb navigation for a Rails project.
+gem 'breadcrumbs_on_rails', '~> 2.3.0'
+# This gem packages the Bootstrap3 bootstrap-datetimepicker (JS & CSS) for Rails 3.1+ asset pipeline.
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
+# Moment.js is a lightweight javascript date library for parsing, manipulating, and formatting dates. This gem allows for its easy inclusion into the rails asset pipeline. 
+gem 'momentjs-rails', '~> 2.5.1 '
+
+# Great Ruby dubugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+gem 'awesome_print', '~> 1.2.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

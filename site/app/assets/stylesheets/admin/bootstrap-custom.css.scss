@@ -1,0 +1,158 @@
+@import "colors";
+
+$font-family-sans-serif: 'Lato', sans-serif;
+
+$text-color: $tws-gray-dark;
+
+$headings-font-family: 'Raleway',sans-serif;
+$headings-font-weight: 700;
+
+$padding-base-vertical: 10px;
+$padding-base-horizontal: 25px;
+$padding-small-vertical: 8px;
+$padding-small-horizontal: 20px;
+$padding-xs-vertical: 6px;
+$padding-xs-horizontal: 12px;
+
+$navbar-default-bg: $color-blue-dark;
+$navbar-default-color: white;
+$navbar-default-link-color: white;
+$navbar-default-link-active-color: $color-blue;
+$navbar-default-link-active-bg: $color-blue-dark;
+$navbar-default-link-hover-color: $color-blue;
+$navbar-default-brand-color: white;
+$navbar-default-brand-hover-color: $color-gray-dark;
+$navbar-default-brand-hover-bg: $color-blue-dark;
+
+$btn-default-border: $twbs-brand-default;
+$btn-default-color: $twbs-brand-default;
+$btn-default-bg: white;
+
+$btn-primary-border: $twbs-brand-primary;
+$btn-primary-color: $twbs-brand-primary;
+$btn-primary-bg: white;
+
+$btn-success-border: $twbs-brand-success;
+$btn-success-color: $twbs-brand-success;
+$btn-success-bg: white;
+
+$btn-info-border: $twbs-brand-info;
+$btn-info-color: $twbs-brand-info;
+$btn-info-bg: white;
+
+$btn-warning-border: $twbs-brand-warning;
+$btn-warning-color: $twbs-brand-warning;
+$btn-warning-bg: white;
+
+$btn-danger-border: $twbs-brand-danger;
+$btn-danger-color: $twbs-brand-danger;
+$btn-danger-bg: white;
+
+@import "bootstrap";
+
+// Custom classes
+.alert-fixed-top{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+p{
+  line-height: 24px;
+  margin: 10px 0px 12px;
+}
+
+::-moz-selection  {
+  color: #fff;
+  text-shadow:none;
+  background:#2B2E31;
+}
+::selection {
+  color: #fff;
+  text-shadow:none;
+  background:#2B2E31;
+}
+
+// Overwrite buttons
+.btn{
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.25s;
+}
+.btn-lg, .btn-group-lg > .btn {
+  font-size: 16px;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+  font-size: 10px;
+}
+
+.btn-xs, .btn-group-xs > .btn {
+  font-size: 10px;
+}
+
+.btn-default{
+  border: 2px solid $twbs-brand-default;
+  &:hover, &:focus, &:active, &.active, .open .dropdown-toggle.btn-default, &.fill {
+    color: white;
+    background-color: $twbs-brand-default;
+    border-color: $twbs-brand-default;
+  }
+}
+
+.btn-primary{
+  border: 2px solid $twbs-brand-primary;
+  &:hover, &:focus, &:active, &.active, .open .dropdown-toggle.btn-primary, &.fill {
+    color: white;
+    background-color: $twbs-brand-primary;
+    border-color: $twbs-brand-primary;
+  }
+}
+
+.btn-success{
+  border: 2px solid $twbs-brand-success;
+  &:hover, &:focus, &:active, &.active, .open .dropdown-toggle.btn-success, &.fill {
+    color: white;
+    background-color: $twbs-brand-success;
+    border-color: $twbs-brand-success;
+  }
+}
+
+.btn-info{
+  border: 2px solid $twbs-brand-info;
+  &:hover, &:focus, &:active, &.active, .open .dropdown-toggle.btn-info, &.fill {
+    color: white;
+    background-color: $twbs-brand-info;
+    border-color: $twbs-brand-info;
+  }
+}
+
+.btn-warning{
+  border: 2px solid $twbs-brand-warning;
+  &:hover, &:focus, &:active, &.active, .open .dropdown-toggle.btn-warning, &.fill {
+    color: white;
+    background-color: $twbs-brand-warning;
+    border-color: $twbs-brand-warning;
+  }
+}
+
+.btn-danger{
+  border: 2px solid $twbs-brand-danger;
+  &:hover, &:focus, &:active, &.active, .open .dropdown-toggle.btn-danger, &.fill {
+    color: white;
+    background-color: $twbs-brand-danger;
+    border-color: $twbs-brand-danger;
+  }
+}
+
+// pagination buttons
+.pagination > li > a, .pagination > li > span {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 8px 20px;
+  transition: all 0.25s ease 0s;
+}

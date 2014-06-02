@@ -1,0 +1,86 @@
+<% content_for :title_header, 'Accounts' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render_tws_breadcrumbs %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Users <small>(last 20 users)</small></h4>
+      </div>
+      <div class="col-md-4 align-right">
+        <%= link_to 'Show all', admin_users_path, :class => 'btn btn-default btn-xs' %>
+        <%= link_to 'New', new_admin_user_path, :class => 'btn btn-warning btn-xs' %>
+      </div>
+    </div>
+    
+    <div class="hline"></div>
+    
+    <% if @users.blank? %>
+      <p><i>There are no users</i></p>
+    <% else %>
+      <table class="table table-striped table-hover table-clickable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>email</th>
+            <th>sign in count</th>
+            <th>current sign in at</th>
+            <th>last sign in at</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for user in @users %>
+            <tr data-link="<%= admin_user_path user %>">
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= user.sign_in_count %></td>
+              <td><%= l user.current_sign_in_at, format: :short unless user.current_sign_in_at.blank? %></td>
+              <td><%= l user.last_sign_in_at, format: :short unless user.last_sign_in_at.blank? %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Admins <small>(last 20 admins)</small></h4>
+      </div>
+      <div class="col-md-4 align-right">
+        <%= link_to 'Show all', admin_admins_path, :class => 'btn btn-default btn-xs' %>
+        <%= link_to 'New', new_admin_admin_path, :class => 'btn btn-warning btn-xs' %>
+      </div>
+    </div>
+    
+    <div class="hline"></div>
+    
+    <% if @admins.blank? %>
+      <p><i>There are no admins</i></p>
+    <% else %>
+      <table class="table table-striped table-hover table-clickable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for admin in @admins %>
+            <tr data-link="<%= admin_admin_path admin %>">
+              <td><%= admin.id %></td>
+              <td><%= admin.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+

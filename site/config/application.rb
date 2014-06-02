@@ -27,6 +27,9 @@ module Site
         'admin/application.js', 'admin/application.css']
 
     # Example for add fonts folder to assets path
-    # config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    # Load files in lib folder, this doesn't load recursive folders
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

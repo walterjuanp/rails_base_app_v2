@@ -1,0 +1,27 @@
+<% content_for :title_header, 'Admins' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render_tws_breadcrumbs %>
+  </div>
+</div>
+
+<div id="toolbar" class="row">
+  <div class="col-md-6">
+    <%= link_to 'Back', admin_admins_path, :class => 'btn btn-default prev-arrow' %>
+  </div>
+  <div class="col-md-6 align-right">
+    <%= link_to 'Delete', admin_admin_path(@admin), :class => 'btn btn-danger', :method => :delete, data: {:confirm => 'Are you sure?'} %>
+    <%= link_to 'Edit', edit_admin_admin_path(@admin), :class => 'btn btn-warning' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      <b>Email:</b>
+      <%= @admin.email %>
+    </p>
+  </div>
+</div>
+

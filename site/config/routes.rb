@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   namespace :admin do
     # Dashboard accesible by /admin (work as admin namespace root)
     get '/' => 'dashboard#index'
+    resource :profile, controller: 'profile', :only => [:show, :edit, :update]
+    resources :accounts, :only => [:index]
+    resources :users
+    resources :admins
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

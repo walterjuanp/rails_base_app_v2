@@ -1,17 +1,35 @@
-<h2>Sign in</h2>
+<% content_for :title_header, 'Sign in' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<div class="row">
+  <div class="col-lg-8">
+    <h4>Sign in</h4>
+    <div class="hline"></div>
+    <p>Fill in the fields to access the administrative panel.</p>
+    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name), layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-5") do |f| %>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+      <%= f.email_field :email, autofocus: true %>
+      <%= f.password_field :password, autocomplete: "off" %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+      <% if devise_mapping.rememberable? -%>
+        <%= f.form_group do %>
+          <%= f.check_box :remember_me %>
+        <% end %>
+      <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+      <%= f.form_group do %>
+        <%= f.submit "Sign in" %>
+      <% end %>
+    <% end %>
 
-<%= render "admin/shared/devise_links" %>
+    
+  </div>
+
+  <!-- ************************************** -->
+  <div class="col-lg-4">
+    <h4>Account links</h4>
+    <div class="hline"></div>
+      <p>Other related links about administrator user account:</p>
+      <%= render "admin/shared/devise_links" %>
+  </div>
+</div>
+

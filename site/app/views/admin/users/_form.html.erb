@@ -1,0 +1,19 @@
+<% # PARAMS user, url
+%>
+
+<%= bootstrap_form_for(user, url: url, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-5") do |f| %>
+
+  <%= f.email_field :email, autofocus: true %>
+  <%= f.text_field :confirmed_at, 'data-behaviour'=>'datepicker', 'data-date-format' => "YYYY-MM-DD HH:mm", :value => (user.confirmed_at.blank? ? '' : user.confirmed_at.strftime('%Y-%m-%d %H:%M')) %>
+
+  <%= f.form_group do %>
+    <div class="hline"></div>
+  <% end %>
+
+  <%= f.password_field :password, autocomplete: "off" %>
+  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+  <%= f.form_group do %>
+    <%= f.submit "#{user.new_record? ? 'Create' : 'Update'}", :class => 'btn btn-primary' %>
+  <% end %>
+<% end %>

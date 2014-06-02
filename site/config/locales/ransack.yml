@@ -1,0 +1,8 @@
+en:
+  ransack:
+    predicates:
+      eq_date: equals
+    attributes:
+      admin:
+        created_at_casted: Created at
+        updated_at_casted: Updated at

@@ -16,4 +16,17 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+
+  #
+  # Overwrite method from devise
+  #
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(Admin) || resource_or_scope == :admin
+      new_admin_session_path
+    elsif resource_or_scope.is_a?(User) || resource_or_scope == :user
+      new_user_session_path
+    else
+      super
+    end
+  end
 end

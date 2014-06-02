@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require rails_bootstrap_forms
+ *= require_self
+ */
+
+@import "fonts-lato";
+@import "fonts-raleway";
+@import "colors";
+@import "bootstrap-custom";
+@import "bootstrap-datetimepicker";
+
+body { 
+  padding-top: 50px; 
+}
+
+
+.blue-bg{
+  background-color: $color-blue;
+}
+
+.hline{
+  border-bottom: 2px solid #384452;
+}
+
+.align-right{
+  text-align: right;
+}
+
+.fixed-top{
+  position: fixed;
+  z-index: 1;
+  left: 0px;
+  right: 0px;
+}
+
+.next-arrow:after{
+  content: "→";
+  padding-left: 5px;
+} 
+
+.prev-arrow:before{
+  content: "←";
+  padding-right: 5px;
+} 
+
+.table-clickable{
+  tbody tr{
+    cursor: pointer;
+  }
+}
+
+
+#title-header{
+  padding: 25px 0;
+  margin-bottom: 30px;
+  h1 {
+    color: white;
+    margin-left: 15px;
+    font-size: 24px;
+  }
+}
+
+#toolbar{
+  margin-bottom: 30px;
+}
+
+a.sort_link, a:hover.sort_link, a:focus.sort_link{
+  color: $tws-gray-dark;
+}
+
+
+.bootstrap-datetimepicker-widget td span {
+  width: 100%;
+}
+.timepicker-picker button.btn{
+  font-size: 10px;
+  padding: 6px 12px;
+}

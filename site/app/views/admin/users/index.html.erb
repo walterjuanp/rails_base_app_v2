@@ -1,0 +1,82 @@
+<% content_for :title_header, 'Users' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render_tws_breadcrumbs %>
+  </div>
+</div>
+
+<div id="toolbar" class="row">
+  <div class="col-md-6">
+    <%= link_to 'Back', admin_accounts_path, :class => 'btn btn-default prev-arrow' %>
+  </div>
+  <div class="col-md-6 align-right">
+    <%= link_to 'New', new_admin_user_path, :class => 'btn btn-warning' %>
+  </div>
+</div>
+
+<%= search_form_for [:admin, @q] do |f| %>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-9">
+          <h4>Users <small>(total of <%= @users.total_count %> users)</small></h4>
+        </div>
+      </div>
+      
+      <div class="hline"></div>
+      
+      <% if @users.blank? %>
+        <p><i>There are no users</i></p>
+      <% else %>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-responsive table-clickable">
+            <thead>
+              <tr>
+                <%= content_tag :th, sort_link(@q, :id, '#') %>
+                <%= content_tag :th, sort_link(@q, :email, 'email') %>
+                <%= content_tag :th, sort_link(@q, :sign_in_count, 'sign in count') %>
+                <%= content_tag :th, sort_link(@q, :confirmed_at, 'confirmed at') %>
+                <%= content_tag :th, sort_link(@q, :created_at, 'crateda at') %>
+                <%= content_tag :th, sort_link(@q, :updated_at, 'updated at') %>
+              </tr>
+            </thead>
+            <tbody>
+              <% for user in @users %>
+                <tr data-link="<%= admin_user_path user %>">
+                  <td><%= user.id %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.sign_in_count %></td>
+                  <td><%= l(user.confirmed_at, format: :short) unless user.confirmed_at.blank? %></td>
+                  <td><%= l(user.created_at, format: :short) unless user.created_at.blank? %></td>
+                  <td><%= l(user.updated_at, format: :short) unless user.updated_at.blank? %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3 well">
+      <div class="form-group">
+        <%= f.label :id_eq %>
+        <%= f.search_field :id_eq, :class => 'form-control search-field' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email_cont %>
+        <%= f.search_field :email_cont, :class => 'form-control search-field' %>
+      </div>
+      <%= f.submit 'Search', class: 'btn btn-success fill' %>
+      <%= f.submit "Clear", :name => nil, :class => 'btn btn-info fill q-reset' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= tws_pagination @users %>
+  </div>
+</div>
+
+

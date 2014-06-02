@@ -1,0 +1,29 @@
+<% content_for :title_header, 'Profile' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render_tws_breadcrumbs %>
+  </div>
+</div>
+
+<div id="toolbar" class="row">
+  <div class="col-md-6">
+    <%= link_to 'Back', admin_profile_path, :class => 'btn btn-default prev-arrow' %>
+  </div>
+</div>
+
+
+<%= bootstrap_form_for(@admin, url: admin_profile_path, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-5") do |f| %>
+  <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+  <%= f.form_group do %>
+    <div class="hline"></div>
+  <% end %>
+
+  <%= f.password_field :current_password, autocomplete: "off" %>
+
+  <%= f.form_group do %>
+    <%= f.submit "Update", :class => 'btn btn-primary' %>
+  <% end %>
+<% end %>

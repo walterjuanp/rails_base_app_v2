@@ -5,39 +5,46 @@
   <%= stylesheet_link_tag    'admin/application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'admin/application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 
-<h1>Admin layout</h1>
+  <%= render admin_signed_in? ? 'admin/shared/header_signed_in' : 'admin/shared/header' %>
 
-<hr/>
+  <% if flash[:notice] %>
+    <div class="container fixed-top">
+      <div class="row">
+        <div class="alert alert-info alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Oh snap!</strong> <%= flash[:notice] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="container fixed-top">
+      <div class="row">
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Oh snap!</strong> <%= flash[:alert] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-<% if flash[:notice] %>
-  <p style="background-color:green;"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-  <p style="background-color:red;"><%= flash[:alert] %></p>
-<% end %>
 
-<%= link_to 'home', root_path %> 
-<br>
-<%= link_to 'private', private_path %> || 
-<% if user_signed_in? %>
-  <%= link_to 'private - sign out', destroy_user_session_path, :method => :delete, :confirm => 'Are you sure to sign out of User account?' %>
-<% else %>
-  <%= link_to 'private - sign in', new_user_session_path %>
-<% end %>
-<br>
-<%= link_to 'admin', admin_path %> || 
-<% if admin_signed_in? %>
-  <%= link_to 'admin - sign out', destroy_admin_session_path, :method => :delete, :confirm => 'Are you sure to sign out of Admin account?' %>
-<% else %>
-  <%= link_to 'admin - sign in', new_admin_session_path %>
-<% end %>
+  <div id="title-header" class="blue-bg">
+    <div class="container">
+      <div class="row">
+        <h1><%= content_for?(:title_header) ? yield(:title_header) : '-' %></h1>
+      </div>
+    </div>
+  </div>
 
-<hr/>
-
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>
